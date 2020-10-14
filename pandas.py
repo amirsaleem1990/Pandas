@@ -381,3 +381,4 @@ plt.show()
 # todays date ........ pd.to_datetime("today")
 
 # total number of cells in dataframe: df.size
+# null/nan/none values in datetime column ............. np.isnat(df.date_column_name)
