@@ -382,3 +382,12 @@ plt.show()
 
 # total number of cells in dataframe: df.size
 # null/nan/none values in datetime column ............. np.isnat(df.date_column_name)
+#------------
+# merge multiple dataframes in one
+from functools import reduce
+dfs = [df1, df2, df3, ...]
+# solution 1
+result_1 = pd.concat(dfs, join='outer', axis=1)
+# solution 2
+result_2 = reduce(lambda df_left,df_right: pd.merge(df_left, df_right, left_index=True, right_index=True, how='outer'), dfs)
+#------------
