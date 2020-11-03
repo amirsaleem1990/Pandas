@@ -317,12 +317,6 @@ df1.fillna({"column_x":0.5,
 # select only <object> type variables:
 ds_cat = dataset.select_dtypes(include = 'object').copy()
 -------------------------------------------------
-
--------------------------------------------------
-
--------------------------------------------------
-
-
 df.ix[::2,0] = np.nan # in column 0,     set elements with indices 0,2,4, ... to NaN
 df.ix[::4,1] = pd.NaT # in column 1,     set elements with indices 0,4, ... to np.NaT
 df.ix[:3,2] = 'nan'   # in column 2,     set elements with index from 0 to 3 to 'nan'
@@ -332,8 +326,6 @@ df.ix[7,:] = np.nan   # in column row 7, set all elements to NaN
 
 
 # select vars based on dtypes ................. features.select_dtypes('number')
-
-
 ----------------------------------------------------------------
 # join two dataframes using <join>
 df1 = pd.DataFrame({"A" : list(range(10)), "B" : list('abcdefghij')})
@@ -391,3 +383,8 @@ result_1 = pd.concat(dfs, join='outer', axis=1)
 # solution 2
 result_2 = reduce(lambda df_left,df_right: pd.merge(df_left, df_right, left_index=True, right_index=True, how='outer'), dfs)
 #------------
+
+-------------------------------------------------
+
+-------------------------------------------------
+
