@@ -416,8 +416,5 @@ df.resample(rule='AS').apply(year_val)
 # Let’s see an example. If we want to calculate the rolling average of 10 days, we can do it as follows.
 df.rolling(window=10).mean().head(20) # head to see first 20 values 
 # Now here, we can see that the first 10 values are NaN because there are not enough values to calculate the rolling mean for the first 10 values. It starts calculating the mean from the 11th value and goes on.
-
-
-
 -------------------------------------------------
 
