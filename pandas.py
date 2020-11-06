@@ -385,6 +385,39 @@ result_2 = reduce(lambda df_left,df_right: pd.merge(df_left, df_right, left_inde
 #------------
 
 -------------------------------------------------
+# https://www.kdnuggets.com/2020/09/introduction-time-series-analysis-python.html#.X2zoteVcRVk.linkedin
+
+# Indexing in Time-Series Data
+df.loc['2000-01-01':'2015-01-01']
+
+# Let’s say we want to get all the data of all the first months from 1992-01-01 to 2000-01-01. The syntax for this in Pandas is ['starting date':'ending date':step].
+df.loc['1992-01-01':'2000-01-01':12]
+
+# Time-Resampling using Pandas
+# Think of resampling as groupby() where we group by based on any column and then apply an aggregate function to check our results. Whereas in the Time-Series index, we can resample based on any rule in which we specify whether we want to resample based on “Years” or “Months” or “Days or anything else.
+# Some important rules for which we resample our time series index are:
+  # M = Month End
+  # A = Year-End
+  # MS = Month Start
+  # AS = Year Start
+# Let’s say we want to calculate the mean value of shipment at the start of every year. We can do this by calling resample at rule='AS' for Year Start and then calling the aggregate function mean on it.
+# We can see the head of it as follows.
+df.resample(rule='AS').mean().head()
+# now we have the mean of Shipping at the start of every year.
+
+# We can even use our own custom functions with resample. Let’s say we want to calculate the sum of every year with a custom function. We can do that as follows.
+def sum_of_year(year_val):
+    return year_val.sum()
+# And then we can apply it via resampling as follows.
+df.resample(rule='AS').apply(year_val)
+
+# Rolling Time Series
+# Rolling is also similar to Time Resampling, but in Rolling, we take a window of any size and perform any function on it. In simple words, we can say that a rolling window of size k means k consecutive values.
+# Let’s see an example. If we want to calculate the rolling average of 10 days, we can do it as follows.
+df.rolling(window=10).mean().head(20) # head to see first 20 values 
+# Now here, we can see that the first 10 values are NaN because there are not enough values to calculate the rolling mean for the first 10 values. It starts calculating the mean from the 11th value and goes on.
+
+
 
 -------------------------------------------------
 
