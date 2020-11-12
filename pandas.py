@@ -418,3 +418,4 @@ df.rolling(window=10).mean().head(20) # head to see first 20 values
 # Now here, we can see that the first 10 values are NaN because there are not enough values to calculate the rolling mean for the first 10 values. It starts calculating the mean from the 11th value and goes on.
 -------------------------------------------------
 
+# select columns with regex ......... df.filter(regex='^(CURRENT_STATUS)', axis=1)
