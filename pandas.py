@@ -419,4 +419,4 @@ df.rolling(window=10).mean().head(20) # head to see first 20 values
 -------------------------------------------------
 
 # select columns with regex ......... df.filter(regex='^(CURRENT_STATUS)', axis=1)
-eof
+# find wiht multiple extections ........... find . \( -name \*.py -o -name  \*.ipynb \)
