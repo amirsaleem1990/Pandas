@@ -420,3 +420,5 @@ df.rolling(window=10).mean().head(20) # head to see first 20 values
 
 # select columns with regex ......... df.filter(regex='^(CURRENT_STATUS)', axis=1)
 # find wiht multiple extections ........... find . \( -name \*.py -o -name  \*.ipynb \)
+# sorting-by-absolute-value-without-changing-the-data ............. df.reindex(df.b.abs().sort_values().index) .................. https://stackoverflow.com/questions/30486263/sorting-by-absolute-value-without-changing-the-data
+
