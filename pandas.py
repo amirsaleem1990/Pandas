@@ -422,3 +422,6 @@ df.rolling(window=10).mean().head(20) # head to see first 20 values
 # find wiht multiple extections ........... find . \( -name \*.py -o -name  \*.ipynb \)
 # sorting-by-absolute-value-without-changing-the-data ............. df.reindex(df.b.abs().sort_values().index) .................. https://stackoverflow.com/questions/30486263/sorting-by-absolute-value-without-changing-the-data
 
+# join multiple columns in one column .......... df.agg(" ".join, axis=1)
+# replace multiple values in string at once with regex ................ df.Column.replace({"\s?No Country\s?|\s?No Brand\s?": ""}, regex=True)
+# replace multiple values in string at once ......... df.column.str.replace(r'No Brand\s*|\s*No Country', '')
