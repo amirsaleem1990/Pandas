@@ -427,3 +427,5 @@ df.rolling(window=10).mean().head(20) # head to see first 20 values
 # replace multiple values in string at once ......... df.column.str.replace(r'No Brand\s*|\s*No Country', '')
 
 # value_counts has perameter <normalize> when this set to True the output in percentages rather then actual counts
+
+# get todays date and time : pd.to_datetime("now") ..... today = pd.to_datetime("today")
