@@ -429,3 +429,5 @@ df.rolling(window=10).mean().head(20) # head to see first 20 values
 # value_counts has perameter <normalize> when this set to True the output in percentages rather then actual counts
 
 # get todays date and time : pd.to_datetime("now") ..... today = pd.to_datetime("today")
+
+# search multiple substrings in string cell .......... df.OBJ_column.str.contains("sub_string_1|substring_2|substring_3")
