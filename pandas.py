@@ -431,3 +431,4 @@ df.rolling(window=10).mean().head(20) # head to see first 20 values
 # get todays date and time : pd.to_datetime("now") ..... today = pd.to_datetime("today")
 
 # search multiple substrings in string cell .......... df.OBJ_column.str.contains("sub_string_1|substring_2|substring_3")
+# draw line in plot ....... plt.axvline(x=0.22058956) ............ plt.axhline(y=df.col.mean());
