@@ -432,3 +432,12 @@ df.rolling(window=10).mean().head(20) # head to see first 20 values
 
 # search multiple substrings in string cell .......... df.OBJ_column.str.contains("sub_string_1|substring_2|substring_3")
 # draw line in plot ....... plt.axvline(x=0.22058956) ............ plt.axhline(y=df.col.mean());
+
+#---------------------
+# Looking up the list of sheets in an excel file .........
+xl = pd.ExcelFile('foo.xls')
+xl.sheet_names  # see all sheet names
+xl.parse(sheet_name)  # read a specific sheet to DataFrame
+# >>>>>>>>>>>>>>>>>>>>>
+
+
