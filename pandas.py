@@ -441,3 +441,6 @@ xl.parse(sheet_name)  # read a specific sheet to DataFrame
 # >>>>>>>>>>>>>>>>>>>>>
 
 
+
+# round float (5 floats) .............. pd.set_option('display.float_format', lambda x: '%.3f' % x)
+
