@@ -444,3 +444,9 @@ xl.parse(sheet_name)  # read a specific sheet to DataFrame
 
 # round float (5 floats) .............. pd.set_option('display.float_format', lambda x: '%.3f' % x)
 
+
+#-------------------
+# read/write datafram from/to gzip compressed file
+df.to_csv(path_or_buf = 'sample.csv.gz', compression="gzip", index = None)
+pd.read_csv("sample.csv.gz", compression="gzip")
+#---------END
