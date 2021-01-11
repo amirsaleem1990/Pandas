@@ -450,3 +450,12 @@ xl.parse(sheet_name)  # read a specific sheet to DataFrame
 df.to_csv(path_or_buf = 'sample.csv.gz', compression="gzip", index = None)
 pd.read_csv("sample.csv.gz", compression="gzip")
 #---------END
+>> df.createdtimestamp.head(2)
+0        2020-03-10 22:25:48
+1        2020-03-10 22:25:48
+
+>> df.createdtimestamp.head(2).str.split().str[0]
+0        2020-03-10
+1        2020-03-10
+#------------------------
+
