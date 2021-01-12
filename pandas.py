@@ -458,4 +458,60 @@ pd.read_csv("sample.csv.gz", compression="gzip")
 0        2020-03-10
 1        2020-03-10
 #------------------------
+#droping missing values rows/columns
+threshold = 0.7 #Dropping columns with missing value rate higher than threshold
+data = data[data.columns[data.isnull().mean() < threshold]]
+#Dropping rows with missing value rate higher than threshold
+data = data.loc[data.isnull().mean(axis=1) < threshold]
+#-----------------------
+#Filling missing values with medians of the columns
+data = data.fillna(data.median())
+#----------------------
+#Dropping the outlier rows with standard deviation
+factor = 3
+upper_lim = data['column'].mean () + data['column'].std () * factor
+lower_lim = data['column'].mean () - data['column'].std () * factor
+
+data = data[(data['column'] < upper_lim) & (data['column'] > lower_lim)]
+
+# In addition, z-score can be used instead of the formula above. 
+# Z-score (or standard score) standardizes the distance between a value and the mean using the standard deviation.
+#---------------------
+#Dropping the outlier rows with Percentiles
+upper_lim = data['column'].quantile(.95)
+lower_lim = data['column'].quantile(.05)
+
+data = data[(data['column'] < upper_lim) & (data['column'] > lower_lim)]
+#---------------------
+#Capping the outlier rows with Percentiles
+upper_lim = data['column'].quantile(.95)
+lower_lim = data['column'].quantile(.05)data.loc[(df[column] > upper_lim),column] = upper_lim
+data.loc[(df[column] < lower_lim),column] = lower_lim
+#---------------------
+#Numerical Binning Example
+data['bin'] = pd.cut(data['value'], bins=[0,30,70,100], labels=["Low", "Mid", "High"])
+#---------------------
+#Categorical Binning Exampl
+e     Country
+0      Spain
+1      Chile
+2  Australia
+3      Italy
+4     Brazil
+conditions = [
+    data['Country'].str.contains('Spain'),
+    data['Country'].str.contains('Italy'),
+    data['Country'].str.contains('Chile'),
+    data['Country'].str.contains('Brazil')]
+
+choices = ['Europe', 'Europe', 'South America', 'South America']
+
+data['Continent'] = np.select(conditions, choices, default='Other')
+       Country      Continent
+0      Spain           Europe
+1      Chile    South America
+2  Australia            Other
+3      Italy           Europe
+4     Brazil    South America
+#--------------------
 
