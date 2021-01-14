@@ -514,4 +514,26 @@ data['Continent'] = np.select(conditions, choices, default='Other')
 3      Italy           Europe
 4     Brazil    South America
 #--------------------
+# drop rows contains outlier
+# using z score
+from scipy import stats
+import numpy as np
+z = np.abs(stats.zscore(boston_df))
+df_without_outliers = df[(z < 3).all(axis=1)]
 
+# using IQR
+df = df[~(
+	(df < (Q1 - 1.5 * IQR)) | (df > (Q3 + 1.5 * IQR))
+	).any(axis=1)]
+
+#-------------------
+# two numerical variables plot on top of each other (stack)
+df1[['x', 'y']].plot.hist(alpha=0.3, stacked=True, bins=10)
+#-------------------
+# kmean clustring
+model = KMeans(n_clusters=3, max_iter=300)
+model.fit(df)
+
+# Plot the First iteration of the kmean.
+colormap = np.array(['red', 'lime', 'blue'])
+plt.scatter(df.x, df.y, c=colormap[model.labels_], s=20)
