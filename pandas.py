@@ -537,3 +537,12 @@ model.fit(df)
 # Plot the First iteration of the kmean.
 colormap = np.array(['red', 'lime', 'blue'])
 plt.scatter(df.x, df.y, c=colormap[model.labels_], s=20)
+
+
+# extract date columns.
+df = df.assign(hour  = df['date'].dt.hour,
+               day   = df['date'].dt.day,
+               month = df['date'].dt.month,
+               year  = df['date'].dt.year)
+
+
