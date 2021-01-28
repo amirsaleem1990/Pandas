@@ -544,5 +544,5 @@ df = df.assign(hour  = df['date'].dt.hour,
                day   = df['date'].dt.day,
                month = df['date'].dt.month,
                year  = df['date'].dt.year)
-
+  
 
