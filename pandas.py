@@ -547,3 +547,5 @@ df = df.assign(hour  = df['date'].dt.hour,
 
 # jab ham size reduce karny k lye str/object type ko catagory me convert karty hen, to phir us ko <df.select_dtypes("O")> ya <df.select_dtypes(str)> sy access nahi kar sakty, rather we should use <df.select_dtypes(pd.CategoricalDtype)>
 # remove all non numeric characters from column ........................ df.column.str.replace(r'\D+', '')
+# convert all columns to string ............. X = X.astype(str)
+
