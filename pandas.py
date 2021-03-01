@@ -549,3 +549,17 @@ df = df.assign(hour  = df['date'].dt.hour,
 # remove all non numeric characters from column ........................ df.column.str.replace(r'\D+', '')
 # convert all columns to string ............. X = X.astype(str)
 
+# groupby and count/size
+df.groupby("Province").size() # return a series
+df.groupby("Province").count() OR df.groupby("Province").agg("count") # return a data frame, includeing all original columns except those grouped by
+
+
+df.reset_index(name='new_column_name') # df.reset_index() sy existing index dataframe me add ho jata h (with name <index>, agar ham is ko koi name dena chahye hen to <name> k argument sy is ko kar sakty hen)
+
+df.groupby("col_1").agg({ 'col3': ['mean', 'count'], 'col4': ['median', 'min', 'count']})
+
+s = pd.Series(["a", "b", "c"]).to_frame(name='counts') # <s> is data frame with single column <counts>
+# zaroori nahi k dask hamesha pandas sy faster ho, is image <dask-vs-pandas.png> ko check karen.
+
+
+
