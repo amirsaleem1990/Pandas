@@ -561,5 +561,8 @@ df.groupby("col_1").agg({ 'col3': ['mean', 'count'], 'col4': ['median', 'min', '
 s = pd.Series(["a", "b", "c"]).to_frame(name='counts') # <s> is data frame with single column <counts>
 # zaroori nahi k dask hamesha pandas sy faster ho, is image <dask-vs-pandas.png> ko check karen.
 
+# more then one missing value (NA) petters while readeing a file ................. missing_value_formats = ["n.a.","?","NA","n/a", "na", "--"]; df = pd.read_csv("employees.csv", na_values = missing_value_formats)
 
 
+
+				 
