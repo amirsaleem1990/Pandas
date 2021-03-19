@@ -563,3 +563,6 @@ s = pd.Series(["a", "b", "c"]).to_frame(name='counts') # <s> is data frame with 
 
 
 
+
+pd.Series(['a', 'm', 'i', 'r', ' ', 's', 'a', 'l', 'i', 'm']).sum() ........... convert text series to one string
+
