@@ -565,9 +565,8 @@ s = pd.Series(["a", "b", "c"]).to_frame(name='counts') # <s> is data frame with 
 
 
 
-<<<<<<< HEAD
+
 pd.Series(['a', 'm', 'i', 'r', ' ', 's', 'a', 'l', 'i', 'm']).sum() ........... convert text series to one string
 
-=======
-				 
->>>>>>> 5dc938211b9f6b7a6a1c5fe6f1418133159d0a1b
+# replace NaNs by previous values .............. df.fillna(method='ffill') ........... df.column_name.fillna(method='ffill') 
+
