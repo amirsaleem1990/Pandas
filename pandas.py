@@ -570,3 +570,5 @@ pd.Series(['a', 'm', 'i', 'r', ' ', 's', 'a', 'l', 'i', 'm']).sum() ........... 
 
 # replace NaNs by previous values .............. df.fillna(method='ffill') ........... df.column_name.fillna(method='ffill') 
 
+
+# remove duplicated columns ............ df = df.loc[:,~df.columns.duplicated()]
