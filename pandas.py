@@ -66,7 +66,9 @@ df.reanem(column = new_names, inplace = True)
 # Dropping rows having NULL Values
 df.dropna(inplace=True)
 --------------------------------------------------
-df = pd.read_csv("file.csv", encoding = "ISO-8859-1", error_bad_lines=False)
+encoding='cp1251'
+encoding="ISO-8859-1"
+df = pd.read_csv("file.csv", encoding = encoding, error_bad_lines=False)
 --------------------------------------------------
 # all columns and qty of null values in each column
 df.isnull().sum()
@@ -572,3 +574,14 @@ pd.Series(['a', 'm', 'i', 'r', ' ', 's', 'a', 'l', 'i', 'm']).sum() ........... 
 
 
 # remove duplicated columns ............ df = df.loc[:,~df.columns.duplicated()]
+
+
+# read 1% data with random rows from big csv-file ............... df = pd.read_csv('file.csv', skiprows = lambda x: x>0 and np.random.rand() > 0.01)
+
+
+# Internally process the file in chunks (low_memory) .........  Internally process the file in chunks, resulting in lower memory use while parsing, but possibly mixed type inference. To ensure no mixed types specify the type with the dtype parameter. ................ df = pd.read_csv('file.csv', low_memory=True, dtype = {'text': str,  'env_problems': 'Int64', 'pollution': 'Int64',  'treatment': 'Int64', 'climate': 'Int64', 'biomonitoring': 'Int64'})
+
+
+# select 0,1,4,7th columns .............. df.iloc[:, np.r_[0:3, 4:7]]
+
+
