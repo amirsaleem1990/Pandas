@@ -585,3 +585,28 @@ pd.Series(['a', 'm', 'i', 'r', ' ', 's', 'a', 'l', 'i', 'm']).sum() ........... 
 # select 0,1,4,7th columns .............. df.iloc[:, np.r_[0:3, 4:7]]
 
 
+# give perameter with apply : df.application_date.agg([min,max]).apply(pd.to_datetime, unit='s')
+
+#----------------------
+>>> df
+        one  two  three
+mouse     1    2      3
+rabbit    4    5      6
+
+>>> # select columns by name
+>>> df.filter(items=['one', 'three'])
+         one  three
+mouse     1      3
+rabbit    4      6
+
+>>> # select columns by regular expression
+>>> df.filter(regex='e$', axis=1)
+         one  three
+mouse     1      3
+rabbit    4      6
+
+>>> # select rows containing 'bbi'
+>>> df.filter(like='bbi', axis=0)
+          one  two  three
+rabbit    4    5      6
+#---------------------
