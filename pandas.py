@@ -610,3 +610,6 @@ rabbit    4      6
           one  two  three
 rabbit    4    5      6
 #---------------------
+
+
+# search multiple substrings (startsiwth) in string cell ............. prefixes = ["xyz", "abc"]; "abcde".startswith(tuple(prefixes))
