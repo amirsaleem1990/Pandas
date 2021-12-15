@@ -613,3 +613,5 @@ rabbit    4    5      6
 
 
 # search multiple substrings (startsiwth) in string cell ............. prefixes = ["xyz", "abc"]; "abcde".startswith(tuple(prefixes))
+
+# convert float to int with NaNs ....................... df.column.astype(float).astype('Int64') ............. df.column.astype(float).astype(int, errors='ignore')
