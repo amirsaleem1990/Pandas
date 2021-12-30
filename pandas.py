@@ -615,3 +615,15 @@ rabbit    4    5      6
 # search multiple substrings (startsiwth) in string cell ............. prefixes = ["xyz", "abc"]; "abcde".startswith(tuple(prefixes))
 
 # convert float to int with NaNs ....................... df.column.astype(float).astype('Int64') ............. df.column.astype(float).astype(int, errors='ignore')
+
+pd.set_option('max_rows', 5)
+x.replace({[0,4]:'AAA'})
+x.replace({range(40,99):'AAA'})
+
+reviews_written = reviews.groupby('taster_twitter_handle').size()
+or
+reviews_written = reviews.groupby('taster_twitter_handle').taster_twitter_handle.count()
+
+Set the index name in the dataset to 'A_NEW_INDEX_NAME'.
+df.rename_axis("A_NEW_INDEX_NAME", axis='rows')
+
