@@ -627,3 +627,4 @@ reviews_written = reviews.groupby('taster_twitter_handle').taster_twitter_handle
 Set the index name in the dataset to 'A_NEW_INDEX_NAME'.
 df.rename_axis("A_NEW_INDEX_NAME", axis='rows')
 
+# print dataframe neatly ......... print(df.to_markdown(tablefmt="grid"))
