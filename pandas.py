@@ -628,3 +628,5 @@ Set the index name in the dataset to 'A_NEW_INDEX_NAME'.
 df.rename_axis("A_NEW_INDEX_NAME", axis='rows')
 
 # print dataframe neatly ......... print(df.to_markdown(tablefmt="grid"))
+is_unique consider NaNs, so if all values are unique but there are one or more NaNs, pd.Series.is_unique returns False, and pd.Series.dropna().is_unique returns True
+
