@@ -628,5 +628,13 @@ Set the index name in the dataset to 'A_NEW_INDEX_NAME'.
 df.rename_axis("A_NEW_INDEX_NAME", axis='rows')
 
 # print dataframe neatly ......... print(df.to_markdown(tablefmt="grid"))
-is_unique consider NaNs, so if all values are unique but there are one or more NaNs, pd.Series.is_unique returns False, and pd.Series.dropna().is_unique returns True
+# is_unique consider NaNs, so if all values are unique but there are one or more NaNs, pd.Series.is_unique returns False, and pd.Series.dropna().is_unique returns True
 
+# infinite values to None  .............  dfdf.replace([np.inf, -np.inf], np.nan)
+# Split (expend/extend) a  column of lists into multiple columns ............. df[['col1','col2']] = pd.DataFrame(df.col.tolist(), index= df.index)
+
+# select the salary of the employee with id number 478 by position .......... df_employees.iat[1, 3]
+# select the salary of the employee with id number 478 by label ............. df_employees.at['478', 'salary']
+# remove all non-numeric characters from all the values in a particular column  ..................... dfObject['C'] = dfObject['C'].str.replace(r'\D+', '') # Or, since in Python 3, \D is fully Unicode-aware by default and thus does not match non-ASCII digits (like ۱۲۳۴۵۶۷۸۹, see proof) you should consider ................. dfObject['C'] = dfObject['C'].str.replace(r'[^0-9]+', '')
+# Drop columns whose name contains a specific string ................ df.filter(regex='^((?!badword).)*$') .............. df[df.columns.drop(list(df.filter(regex='Test', case=False)))] ............. df.select(lambda x: not re.search('Test\d+', x), axis=1)
+Out[39]:
