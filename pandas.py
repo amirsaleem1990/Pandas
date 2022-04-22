@@ -637,4 +637,8 @@ df.rename_axis("A_NEW_INDEX_NAME", axis='rows')
 # select the salary of the employee with id number 478 by label ............. df_employees.at['478', 'salary']
 # remove all non-numeric characters from all the values in a particular column  ..................... dfObject['C'] = dfObject['C'].str.replace(r'\D+', '') # Or, since in Python 3, \D is fully Unicode-aware by default and thus does not match non-ASCII digits (like ۱۲۳۴۵۶۷۸۹, see proof) you should consider ................. dfObject['C'] = dfObject['C'].str.replace(r'[^0-9]+', '')
 # Drop columns whose name contains a specific string ................ df.filter(regex='^((?!badword).)*$') .............. df[df.columns.drop(list(df.filter(regex='Test', case=False)))] ............. df.select(lambda x: not re.search('Test\d+', x), axis=1)
-Out[39]:
+
+# remove all alphanumeric from series ............ df.col.str.replace('[a-zA-Z0-9]', '')
+# head and tail at the same time ............. df.iloc[np.r_[0:5, -5:0]]
+
+# remove all non alpha from series ................ df.column_namestr.replace(r'[^a-zA-Z]', '')
