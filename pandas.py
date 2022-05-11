@@ -642,3 +642,16 @@ df.rename_axis("A_NEW_INDEX_NAME", axis='rows')
 # head and tail at the same time ............. df.iloc[np.r_[0:5, -5:0]]
 
 # remove all non alpha from series ................ df.column_namestr.replace(r'[^a-zA-Z]', '')
+
+
+# change background color to black ........... plt.style.use('dark_background')
+
+####### show image in full screen 
+plt.switch_backend('TkAgg'); df.my_col.plot(color='red');
+mng = plt.get_current_fig_manager()
+### works on Ubuntu??? >> did NOT working on windows
+mng.resize(*mng.window.maxsize())
+# mng.window.state('zoomed') #works fine on Windows!
+plt.show()
+###################################
+
