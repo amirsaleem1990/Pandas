@@ -655,3 +655,6 @@ mng.resize(*mng.window.maxsize())
 plt.show()
 ###################################
 
+
+# month name ........... df.date_col.dt.month_name()
+# isocalendar ............ df.date_col.dt.isocalendar()
