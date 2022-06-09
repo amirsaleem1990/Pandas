@@ -1,4 +1,4 @@
-
+    
 # perform a function on one column among all columns
 def partition(x):
     if x < 3:
