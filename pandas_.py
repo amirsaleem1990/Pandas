@@ -681,3 +681,6 @@ plt.show()
 
 
 
+#check  is there any duplicated column ............... df.apply(lambda col: hash(tuple(col))).is_unique
+
+
