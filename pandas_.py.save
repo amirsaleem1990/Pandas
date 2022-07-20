@@ -688,13 +688,8 @@ plt.show()
 # pandas does sort series by index before ploting internaly, to avoid this use ....... ts.sort_values().plot(use_index=False)
 
 
-# Highlighting rows based on a condition
-def print_with_highlighted_rows(self, condition):
-    highlighted_rows = np.where(condition,'background-color: green','')
-    styler = self.df.style.apply(lambda _: highlighted_rows)
-    styler = styler.set_properties(**{'text-align': 'left'})
-    display(styler)
-
-
-# pandas data frame view in external window like R-view : pandasgui ........... pip3 install pandasgui ........... from pandasgui import show ....... show(my_df)
-
+	def print_with_highlighted_rows(self, condition):
+		highlighted_rows = np.where(condition,'background-color: green','')
+		styler = self.df.style.apply(lambda _: highlighted_rows)
+		styler = styler.set_properties(**{'text-align': 'left'})
+		display(styler)
