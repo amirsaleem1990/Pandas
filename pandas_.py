@@ -698,3 +698,8 @@ def print_with_highlighted_rows(self, condition):
 
 # pandas data frame view in external window like R-view : pandasgui ........... pip3 install pandasgui ........... from pandasgui import show ....... show(my_df)
 
+
+# Setting Yaxis in Matplotlib using Pandas ................... df.plot(ylim=(0,200))
+
+
+# Adding a y-axis label to secondary y-axis in matplotlib ............... plot(y1) ; plt.gca().twinx().plot(y2, color = 'r') # default color is same as first ax
