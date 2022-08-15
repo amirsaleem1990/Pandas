@@ -703,3 +703,6 @@ def print_with_highlighted_rows(self, condition):
 
 
 # Adding a y-axis label to secondary y-axis in matplotlib ............... plot(y1) ; plt.gca().twinx().plot(y2, color = 'r') # default color is same as first ax
+
+# find missing dates from column/index ........... pd.date_range(X_train.index.min(), X_train.index.max(), freq='D').difference(X_train.index)
+
