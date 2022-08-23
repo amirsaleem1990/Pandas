@@ -706,3 +706,7 @@ def print_with_highlighted_rows(self, condition):
 
 # find missing dates from column/index ........... pd.date_range(X_train.index.min(), X_train.index.max(), freq='D').difference(X_train.index)
 
+# get date component from datetime column .............. df[['year', 'month', 'day', 'hour', 'minute', 'sec']] = pd.to_datetime(df['time']).apply(lambda x: (x.year, x.month, x.day, x.hour, x.minute, x.second)).apply(pd.Series)
+
+# df['column'].str.contains('abc', case=False)
+
