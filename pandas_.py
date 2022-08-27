@@ -710,3 +710,4 @@ def print_with_highlighted_rows(self, condition):
 
 # df['column'].str.contains('abc', case=False)
 
+# loc with multiindex ................ df.loc[('index_1', "index_2")]  ............. df.loc[ [('at', 3),('at', 7),('at', 5)] ]
