@@ -711,3 +711,8 @@ def print_with_highlighted_rows(self, condition):
 # df['column'].str.contains('abc', case=False)
 
 # loc with multiindex ................ df.loc[('index_1', "index_2")]  ............. df.loc[ [('at', 3),('at', 7),('at', 5)] ]
+
+# fill missing values with mean: .......... df.fillna(df.select_dtypes(include='number').mean().iloc[0], inplace=True)
+# fill msising values with mode ............. df.fillna(df.select_dtypes(include='object').mode().iloc[0], inplace=True)
+
+
