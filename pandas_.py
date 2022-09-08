@@ -716,3 +716,5 @@ def print_with_highlighted_rows(self, condition):
 # fill msising values with mode ............. df.fillna(df.select_dtypes(include='object').mode().iloc[0], inplace=True)
 
 
+# pd.read_csv reads .zip file if there is only one csv file, likewise pd.read_pickle reads .zip file if there is only one pkl file
+
