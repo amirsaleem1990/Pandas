@@ -718,3 +718,7 @@ def print_with_highlighted_rows(self, condition):
 
 # pd.read_csv reads .zip file if there is only one csv file, likewise pd.read_pickle reads .zip file if there is only one pkl file
 
+
+# data_df.col.replace({1:'Survived'}, inplace=True)
+
+
