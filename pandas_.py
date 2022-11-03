@@ -722,3 +722,16 @@ def print_with_highlighted_rows(self, condition):
 # data_df.col.replace({1:'Survived'}, inplace=True)
 
 
+# import pandas as pd
+
+# from io import StringIO; data="Amir,32\nHamza,8\nOqba,4\nUrwa,2"; pd.read_csv(StringIO(data), names=["name", "age"])
+#     name  age
+# 0   Amir   32
+# 1  Hamza    8
+# 2   Oqba    4
+# 3   Urwa    2
+
+
+
+# sort dataframe by multiple columns, some ascending and some descending .......... df.sort_values(by=["col_a", "col_2", "col_3"], ascending=[True, False, False])
+
