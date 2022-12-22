@@ -735,3 +735,26 @@ def print_with_highlighted_rows(self, condition):
 
 # sort dataframe by multiple columns, some ascending and some descending .......... df.sort_values(by=["col_a", "col_2", "col_3"], ascending=[True, False, False])
 
+# horizontal box plots in matplotlib ............  df.col.boxplot(vert=False) ........... plt.boxplot(df["feature"], vert=False)
+
+## ################# mask
+is_small = col < col.quantile(.25)
+is_large = col > col.quantile(.75)
+is_medium = ~(is_small | is_large)
+col.mask(is_small, 'small').mask(is_large, 'large').mask(is_medium, 'medium')
+
+
+is_small = df < df.quantile(.25)
+is_large = df > df.quantile(.75)
+pd.DataFrame(
+    np.where(is_small, 'small', np.where(is_large, 'large', 'medium')),
+    df.index, df.columns
+)
+
+
+(pd.qcut(col, q=[0, .25, .75, 1], labels=['small', 'medium', 'large']))
+
+df.apply(pd.qcut, q=[0, .25, .75, 1], labels=['small', 'medium', 'large'], axis=0)
+########################
+
+
