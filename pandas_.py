@@ -758,3 +758,6 @@ df.apply(pd.qcut, q=[0, .25, .75, 1], labels=['small', 'medium', 'large'], axis=
 ########################
 
 
+# convert float to str with preserving NaNs ............ df.my_float_col = df.my_float_col.dropna().astype(int).astype(str).reindex(df.index)
+
+
