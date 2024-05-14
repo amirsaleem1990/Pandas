@@ -762,3 +762,45 @@ df.apply(pd.qcut, q=[0, .25, .75, 1], labels=['small', 'medium', 'large'], axis=
 
 
 # manual grid search dataframe from dictionary ................... from itertools import product; param_combinations = list(product(*hyperparameters.values())); pd.DataFrame(param_combinations, columns=hyperparameters.keys())
+
+
+# Filter for the year 2019 with loc
+df.loc[lambda x: x.Year == 2019]
+
+
+
+
+>>> x
+Quality        
+bad      Size      1.00
+         Weight   -0.01
+good     Size      1.00
+         Weight   -0.28
+Name: Size, dtype: float64
+
+>>> x.xs("Weight", level=1)
+Quality
+bad    -0.01
+good   -0.28
+Name: Size, dtype: float64
+
+>>> x.xs("bad", level=0)
+Size      1.00
+Weight   -0.01
+Name: Size, dtype: float64
+
+
+
+df[df['School Name'].str.contains('Academy', case=False)]
+
+
+pd.Series([1,2,33,983,43,9]).astype(str).str.zfill(10)
+
+
+# Identify the top-rated applications by total number of ratings for each primary genre.
+df.loc[df.groupby("prime_genre")["rating_count_tot"].idxmax()]
+
+
+
+# Sort the DataFrame based on the absolute value of coefficients
+coef_df = coef_df.reindex(coef_df.Coefficient.abs().sort_values(ascending=False).index)
