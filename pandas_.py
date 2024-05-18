@@ -804,3 +804,27 @@ df.loc[df.groupby("prime_genre")["rating_count_tot"].idxmax()]
 
 # Sort the DataFrame based on the absolute value of coefficients
 coef_df = coef_df.reindex(coef_df.Coefficient.abs().sort_values(ascending=False).index)
+
+
+df.groupby([df.date.dt.date, 'category']).price.mean()
+
+
+
+filtered_df = filtered_df.sort_values(by = ['life_expec', 'health'], ascending = [True, False])
+
+
+
+# Create bins for child mortality, ensuring the last bin includes the maximum value
+bins = np.arange(0, df['child_mort'].max() + 10, 10)
+# Create a new column with the binned child mortality values
+df['child_mort_bins'] = pd.cut(df['child_mort'], bins=bins, right=False, labels=bins[:-1])
+
+
+
+df_filtered['baseline_value_boxcox'], _ = boxcox(df_filtered['baseline value'])
+
+
+
+
+
+
