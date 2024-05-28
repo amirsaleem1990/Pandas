@@ -828,3 +828,32 @@ df_filtered['baseline_value_boxcox'], _ = boxcox(df_filtered['baseline value'])
 
 
 
+filtered_df = filtered_df.sort_values(by='z_score', key=abs, ascending=False)
+
+
+
+df_agg = df_real_estate.groupby('TRANSACTION TYPE').agg(
+    Number_of_Transactions = ('TRANSACTION TYPE', 'count'),
+    Average_Transaction_Amount_INR = ('AMOUNT IN (INR)', 'mean'),
+    Average_Client_Age = ('CLIENT AGE', 'mean')
+).reset_index()
+
+
+
+df.groupby('Segment')[['Discount', 'Profit']].describe()
+
+
+sns.boxplot(x='Segment', y='Discount', data=data)
+
+
+
+
+df.apply(pd.to_numeric, errors='coerce')
+
+
+
+# Combine Booker, Matias, and Nicolas into a single column Seller, taking the first non-empty value for each row.
+df['Seller'] = df[['Booker', 'Matias', 'Nicolas']].apply(lambda x: next((i for i in x if i), ''), axis=1)
+
+
+
