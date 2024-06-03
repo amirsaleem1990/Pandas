@@ -857,3 +857,29 @@ df['Seller'] = df[['Booker', 'Matias', 'Nicolas']].apply(lambda x: next((i for i
 
 
 
+df['FOUR_DAY_TOTAL'] = df['ROUNDED_AMOUNT'].rolling('4D', closed='left').sum()
+
+
+end_date = start_date + pd.DateOffset(days=3)
+
+
+# Remove '$', and 'nan'
+df.column_name.astype(str).str.replace(r'[$, nan]', '', regex=True)
+
+
+
+
+
+# Find the most common `Type` for each `Listing ID`
+(
+    (
+        df.groupby(['Listing ID', 'Type'])
+        .size()
+        .reset_index(name='Count')
+        .sort_values(by='Count', ascending=False)
+    )
+    .groupby('Listing ID')
+    .first()
+    .reset_index()
+    [['Listing ID', 'Type']]
+)
