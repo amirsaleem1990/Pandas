@@ -883,3 +883,50 @@ df.column_name.astype(str).str.replace(r'[$, nan]', '', regex=True)
     .reset_index()
     [['Listing ID', 'Type']]
 )
+
+
+
+
+
+
+-------
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.linear_model import LogisticRegression
+
+categorical_features = ['race', 'sex', 'marital.status']
+numeric_features = ['age', 'hours.per.week']
+
+preprocessor = ColumnTransformer(
+    transformers=[
+        ('num', 'passthrough', numeric_features),
+        ('cat', OneHotEncoder(), categorical_features)
+    ])
+
+# Create the logistic regression pipeline
+pipeline = Pipeline(steps=[
+    ('preprocessor', preprocessor),
+    ('classifier', LogisticRegression(max_iter=1000))
+])
+
+X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=42)
+pipeline.fit(X_train, y_train)
+y_pred = pipeline.predict(X_test)
+
+
+feature_names = (numeric_features +
+                 list(pipeline.named_steps['preprocessor']
+                      .named_transformers_['cat']
+                      .get_feature_names(input_features=categorical_features)))
+
+# Get coefficients from the logistic regression model
+coefficients = pipeline.named_steps['classifier'].coef_[0]
+
+# Create a DataFrame to view the feature names with their corresponding coefficients
+coefficients_df = pd.DataFrame({
+    'Feature': feature_names,
+    'Coefficient': coefficients
+})
+-------
+
