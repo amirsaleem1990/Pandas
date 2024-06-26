@@ -930,3 +930,397 @@ coefficients_df = pd.DataFrame({
 })
 -------
 
+
+>>> from scipy.stats import kendalltau
+>>> kendalltau?
+mannwhitneyu(
+    x,
+    y,
+    use_continuity=True,
+    alternative='two-sided',
+    axis=0,
+    method='auto',
+    *,
+    nan_policy='propagate',
+    keepdims=False,
+)
+Docstring:
+Perform the Mann-Whitney U rank test on two independent samples.
+
+The Mann-Whitney U test is a nonparametric test of the null hypothesis
+that the distribution underlying sample `x` is the same as the
+distribution underlying sample `y`. It is often used as a test of
+difference in location between distributions.
+
+
+
+# Kind of label encodeing
+pd.factorize(df['occupation'])[0]
+pd.Categorical(df['income']).codes
+
+
+
+
+>>> from scipy.stats import kendalltau
+>>> kendalltau?
+mannwhitneyu(
+    x,
+    y,
+    use_continuity=True,
+    alternative='two-sided',
+    axis=0,
+    method='auto',
+    *,
+    nan_policy='propagate',
+    keepdims=False,
+)
+Docstring:
+Perform the Mann-Whitney U rank test on two independent samples.
+
+The Mann-Whitney U test is a nonparametric test of the null hypothesis
+that the distribution underlying sample `x` is the same as the
+distribution underlying sample `y`. It is often used as a test of
+difference in location between distributions.
+
+
+
+# Kind of label encodeing
+pd.factorize(df['occupation'])[0]
+pd.Categorical(df['income']).codes
+
+
+
+
+
+reset_index(name='robbery_count')
+
+
+
+
+for i, (year, counts) in enumerate(robbery_counts_by_year.items()):
+
+
+
+
+precision, recall, f1, _ = precision_recall_fscore_support(y_test, y_pred, average='binary')
+
+
+
+from IPython.display import HTML
+import base64
+
+# Replace 'path/to/your/image.jpg' with the actual path to your image file
+image_path = '/home/amir/26.png'
+
+# Read the image file and convert it to base64
+with open(image_path, "rb") as image_file:
+    encoded_image = base64.b64encode(image_file.read()).decode('utf-8')
+
+# Embed the base64-encoded image in the notebook
+html_code = f'<img src="data:image/jpeg;base64,{encoded_image}">'
+# HTML(html_code)
+html_code
+
+
+
+from scipy.stats import zscore
+df['avg_rating_zscore'] = zscore(df['Book_average_rating'])
+
+
+
+
+
+
+import pandas as pd
+from scipy import stats
+
+df = pd.read_csv('/tmp/inputs/1_raw_base_data.csv')
+
+z_avg_rating = stats.zscore(df['Book_average_rating']) 
+z_gross_sales = stats.zscore(df['gross sales'])
+
+threshold = 3
+filtered_df = df[(z_avg_rating < threshold) &  
+                (z_avg_rating > -threshold) &  
+                (z_gross_sales < threshold) &
+                (z_gross_sales > -threshold)]
+
+print(filtered_df.shape)
+
+
+
+
+
+plt.scatter(df['units sold'], df['Book_average_rating'])
+
+
+
+
+df['Sales_Category'] = pd.qcut(df['gross sales'], q=[0, 0.33, 0.66, 1], labels=['Low', 'Medium', 'High'])
+
+
+df._get_numeric_data()
+
+
+
+df = df[np.isfinite(df['gross sales'])]
+
+
+
+df = df.replace([np.inf, -np.inf], np.nan).fillna(0)   
+
+
+
+df['Suspension_100%_Indicator'] = df['Description'].str.contains('Suspension 100%', case=False)
+
+
+
+
+data = pd.get_dummies(serious_accidents, columns=['Road_Surface_Conditions'], drop_first=True)
+
+
+
+
+
+
+time_intervals = ['Morning', 'Afternoon', 'Evening', 'Night']
+
+time_counts = serious_accidents.groupby(pd.cut(pd.to_datetime(serious_accidents['Time'], format='%H:%M').dt.hour,
+                                                bins=[0, 6, 12, 18, 24], labels=time_intervals, include_lowest=True)).size()
+
+
+
+
+# Regression plot
+sns.regplot(x='Age at enrollment', y='Curricular units 1st sem (grade)', data=data, ax=axes[i])
+
+
+
+
+
+
+skew = df['PRICE'].skew()  
+# Assess normality
+kstest = stats.kstest(df['PRICE'], 'norm')
+print(f'Normality test p-value: {kstest.pvalue:.3f}')
+
+
+
+
+
+
+>>> d1 = df.groupby(['ADDRESS', 'BROKERTITLE'], as_index=False).first()
+>>> d2 = df.drop_duplicates(subset=['ADDRESS', 'BROKERTITLE'], keep='first')
+>>> d1 = d1.sort_values(['ADDRESS', "BROKERTITLE"]).reset_index(drop=True)
+>>> d2 = d2.sort_values(['ADDRESS', "BROKERTITLE"]).reset_index(drop=True)
+>>> d1.eq(d2).all().all()
+# True
+
+
+
+
+
+
+series.reset_index(name='counts')
+df.reset_index(names=['counts'])
+
+
+
+
+
+
+X._get_numeric_data()   
+
+
+df['Gender'] = pd.factorize(df['Gender'])[0]
+
+
+df[['Year', 'Quarter', 'Month', 'Day', 'Weekday']] = pd.to_datetime(df['Date']).apply(lambda x: pd.Series([x.year, x.quarter, x.month, x.day, x.weekday()]))
+
+
+
+
+
+
+
+
+
+df['Quarter'] = df['Date'].dt.to_period("Q")
+
+
+df.hist(bins=20, figsize=(10, 8)) # all numeric variables.
+
+
+sns.scatterplot(data=df, x="total", y="tax", hue="service")
+
+
+
+
+
+
+
+
+
+from sklearn.preprocessing import QuantileTransformer
+scaler = QuantileTransformer(output_distribution='normal')
+df[num_cols] = scaler.fit_transform(df[num_cols])
+
+
+from sklearn.preprocessing import KBinsDiscretizer
+kb_discretizer = KBinsDiscretizer(n_bins=10, encode='ordinal')
+df[num_cols] = kb_discretizer.fit_transform(df[num_cols])
+
+
+
+
+df.columns.difference(['InvoiceNo'])
+
+
+
+> medians
+{'Tuesday': 9.32,
+ 'Monday': 8.4,
+ 'Thursday': 10.5,
+ 'Sunday': 6.35,
+ 'Wednesday': 9.92,
+ 'Friday': 9.92}
+> max_median_day = max(medians, key=medians.get)
+> max_median_day
+Thursday
+> medians[max_median_day]
+10.5
+
+
+
+df.groupby('CustomerID').agg(No_of_invoices=('InvoiceNo', 'nunique'), Total_Quantity=('Quantity', 'sum')).reset_index()
+
+
+
+
+
+df[numeric_cols] = df[numeric_cols].replace({np.inf: np.nan, -np.inf: np.nan})
+
+
+gift_products = df[df['Description'].str.contains('GIFT', case=False, na=False)]
+
+
+
+
+
+
+
+
+
+# rating: string
+# runtime: numeric
+fig, ax = plt.subplots(figsize=(10,6))
+for rating, data in df.groupby('rating'):
+    data['runtime'].plot(kind='kde', label=rating, ax=ax)
+ax.set_xlabel('Runtime (minutes)')  
+ax.set_ylabel('Density')
+ax.set_title('Distribution of Movie Runtimes by Rating')
+ax.legend()
+plt.tight_layout()
+plt.show()
+
+
+_, ax = plt.subplots(figsize=(8,6))
+df['runtime'].hist(by=df['rating'], ax=ax, bins=30)
+ax.set_xlabel('Runtime (minutes)')
+ax.set_title('Distribution of Movie Runtimes by Rating')
+plt.tight_layout()
+plt.show()
+
+
+
+category_engagement = df.groupby('category_id').agg(
+    videos=('video_id', 'count'),
+    avg_views=('views', 'mean'), 
+    avg_likes=('likes', 'mean'),
+    avg_dislikes=('dislikes', 'mean'),
+    avg_comments=('comment_count', 'mean')
+).reset_index()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def remove_punctuation(text):
+    return text.translate(str.maketrans('', '', string.punctuation))
+
+
+word_counts = Counter()
+for desc in df['description']:
+    word_counts.update(desc.split())
+
+sns.heatmap(train.isnull())
+
+
+
+
+
+# Create a dataframe `df_top20` for the top 20 rows with highest value of `Total`
+df_top20 = df.nlargest(20, "Total")
+
+
+df = df.asfreq('b','ffill')
+kurt=df['Close'].kurtosis()
+
+
+
+corr = df.corr()
+corr.style.background_gradient(cmap = "copper")
+
+
+
+
+sns.heatmap(df.corr(), annot = True, square = False, linewidths = 5, linecolor = "white", cmap = "Oranges");
+
+from matplotlib.pylab import rcParams
+rcParams['figure.figsize'] = (14,8)
+sns.set_style('darkgrid')
+
+
+
+
+fig,axes = plt.subplots(2,2,figsize=[15,7])
+
+axes[0,0].plot(data.Close)
+axes[0,0].set_title("Daily",size=16)
+axes[0,1].plot(data.Close.resample('M').mean())
+axes[0,1].set_title("Monthly",size=16)
+
+
+axes[1,0].plot(data.Close.resample('Q').mean())
+axes[1,0].set_title('Quarterly',size=16)
+
+axes[1,1].plot(data.Close.resample('A').mean())
+axes[1,1].set_title('Annualy',size=16)
+
+plt.tight_layout()
+plt.show()
+
+
+
+
+
+
+
+data[['a', 'b']] = data['c'].str.split('/', expand=True)
+
+
+
