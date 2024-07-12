@@ -1324,3 +1324,20 @@ data[['a', 'b']] = data['c'].str.split('/', expand=True)
 
 
 
+# Extract components from `Date`
+date_components = ["Year", "Month", "Day"]
+for component in date_components:
+  df[component] = getattr(df['Date'].dt, component.lower())
+
+
+
+# Extract the month.
+df['month'] = df['date'].dt.strftime('%B')
+
+
+
+merged_df.groupby('A').agg(
+    {'B':'mean',
+     'C':'mean'
+    }
+)
