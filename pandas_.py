@@ -1341,3 +1341,17 @@ merged_df.groupby('A').agg(
      'C':'mean'
     }
 )
+
+
+
+# Get percentile
+from scipy.stats import percentileofscore
+desired_value = 7
+series = pd.Series(range(20))
+percentile_rank = percentileofscore(series, desired_value)
+print(percentile_rank)
+
+
+
+
+
