@@ -1355,3 +1355,25 @@ print(percentile_rank)
 
 
 
+# Handle cases where clicks are 0 to avoid division by zero errors
+df['column'] = df['column'].replace([float('inf'), -float('inf')], 0).fillna(0)
+
+
+
+df_churned['Age at Churn'] = (df_churned['Churn Date'] - df_churned['Date of Birth']).astype('timedelta64[Y]')
+
+coefficients_df = coefficients_df.reindex(coefficients_df['Coefficient'].abs().sort_values(ascending=False).index)
+
+
+
+df['Body'] = df['Body'].str.translate(str.maketrans('', '', string.punctuation))
+
+
+df_result = df['customerEmailSentFrom'].value_counts().to_frame(name='frequency')
+
+
+
+df_agg = df_agg.sort_values(by=['nunique', 'Country'], ascending=[False, True])
+
+df_text['MESSAGE'] = df_text['MESSAGE'].astype(str).str.translate(str.maketrans('', '', string.punctuation))
+
