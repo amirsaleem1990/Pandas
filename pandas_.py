@@ -1377,3 +1377,41 @@ df_agg = df_agg.sort_values(by=['nunique', 'Country'], ascending=[False, True])
 
 df_text['MESSAGE'] = df_text['MESSAGE'].astype(str).str.translate(str.maketrans('', '', string.punctuation))
 
+
+
+text = text.translate(str.maketrans('', '', string.punctuation))  # Remove punctuation
+
+
+
+# Remove HTML tags
+soup = BeautifulSoup(text, 'html.parser')
+text = soup.get_text()
+
+# Remove non-alphanumeric  
+characters except spaces
+text = re.sub(r'[^a-zA-Z0-9\s]', '', text)
+
+
+
+>>> df.head()
+   YEAR    JAN    FEB    MAR    APR    MAY    JUN    JUL  ...    OCT    NOV    DEC  D-J-F  M-A-M  J-J-A  S-O-N  metANN
+0  1910  27.29  26.99  26.49  26.19  27.19  27.49  27.69  ...  28.29  28.29  27.79  27.33  26.62  27.72  28.52   27.55
+
+>>> df_monthly = df.melt(id_vars=['YEAR'], value_vars=['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'], var_name='Month', value_name='Temperature')
+>>> df_monthly
+      YEAR Month  Temperature
+0     1910   JAN        27.29
+1     1911   JAN        26.99
+
+
+>>> df.head()
+| Month               |   Actual |   Forecast |
+|:--------------------|---------:|-----------:|
+| 1996-12-01 00:00:00 |    28.29 |    89.1623 |
+| 1997-12-01 00:00:00 |   999.9  |    97.6745 |
+
+>>> df.reset_index().melt('Month', var_name='category', value_name='temperature')
+|    | Month               | category   |   temperature |
+|---:|:--------------------|:-----------|--------------:|
+|  0 | 1996-12-01 00:00:00 | Actual     |         28.29 |
+|  1 | 1997-12-01 00:00:00 | Actual     |        999.9  |
