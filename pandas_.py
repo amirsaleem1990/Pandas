@@ -1415,3 +1415,24 @@ text = re.sub(r'[^a-zA-Z0-9\s]', '', text)
 |---:|:--------------------|:-----------|--------------:|
 |  0 | 1996-12-01 00:00:00 | Actual     |         28.29 |
 |  1 | 1997-12-01 00:00:00 | Actual     |        999.9  |
+
+
+
+df.boxplot(column=[col], by='cluster_group')
+
+
+df.columns[df.columns.str.contains('hour|day|month|year')]
+
+
+
+# Explain /class_weight='balanced'/ in the following expression:
+# model = RandomForestClassifier(class_weight='balanced', random_state=42)
+# In the expression model = RandomForestClassifier(class_weight='balanced', random_state=42), the parameter class_weight='balanced' is used to address the issue of imbalanced datasets in machine learning classification tasks. class_weight='balanced' tells the Random Forest Classifier to automatically adjust the weights assigned to each class during training. It calculates these weights inversely proportional to the class frequencies. In simpler terms, the minority classes are given higher weights, while the majority classes are given lower weights.
+
+
+
+is_all_values_of_X_exist_in_Y = set(X).issubset(Y)
+
+
+
+
