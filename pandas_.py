@@ -1436,3 +1436,31 @@ is_all_values_of_X_exist_in_Y = set(X).issubset(Y)
 
 
 
+from scipy.stats import boxcox
+
+# Apply Box-Cox transformation to `Price`
+price_boxcox, price_lambda = boxcox(df['Price'])
+
+#Convert the predicted and actual prices back to their original scale
+y_pred_original = inv_boxcox(y_pred, price_lambda)
+
+
+
+# Filter columns starting with digit or '/'
+df_dates = df.filter(regex='^\\d|/')
+
+
+# /X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, shuffle=False)/
+# By default, train_test_split shuffles the data randomly before splitting. This is important to ensure that the training and testing sets are representative of the overall data distribution and to prevent any biases that might arise from the order of the data. With shuffle=False the data will be split into training and testing sets sequentially, maintaining the original order.
+
+
+
+# If you have a DataFrame with 5 columns and you set thresh=3, it translates to:
+#     Keep rows that have at least 3 non-NaN values
+#     Remove rows that have more than 2 NaNs (5 columns - 3 = 2)
+sample_df.dropna(thresh=df.shape[1] - 2, inplace=True)
+
+
+# Calculate 9:00 AM today
+nine_am_today = datetime.datetime.today().replace(hour=9, minute=0, second=0, microsecond=0)
+
