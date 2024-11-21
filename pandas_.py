@@ -1464,3 +1464,24 @@ sample_df.dropna(thresh=df.shape[1] - 2, inplace=True)
 # Calculate 9:00 AM today
 nine_am_today = datetime.datetime.today().replace(hour=9, minute=0, second=0, microsecond=0)
 
+
+
+# Use lambda to add a new column using still not defined columns.
+df = pd.DataFrame({
+    'Unit price': np.random.normal(loc=15.0, scale=5.0, size=100),  # Mean price: 15, Std: 5
+    'Quantity': np.random.randint(1, 10, size=100),  # Random quantities from 1 to 9
+    'Tax 5%': lambda x: x['Unit price'] * x['Quantity'] * 0.05,  # Tax is 5% of total
+})
+
+
+
+'Critic_Score': np.clip(np.random.normal(loc=75.8, scale=10.8, size=N), 0, 100),  # Clip to 0-100
+
+
+
+
+
+
+
+
+
