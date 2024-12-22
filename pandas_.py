@@ -1479,6 +1479,7 @@ df = pd.DataFrame({
 
 
 
+humidity = np.random.normal(loc=60, scale=10, size=12).clip(min=0, max=100)  # Humidity in percentage
 
 
 
