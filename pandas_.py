@@ -1397,7 +1397,8 @@ text = re.sub(r'[^a-zA-Z0-9\s]', '', text)
    YEAR    JAN    FEB    MAR    APR    MAY    JUN    JUL  ...    OCT    NOV    DEC  D-J-F  M-A-M  J-J-A  S-O-N  metANN
 0  1910  27.29  26.99  26.49  26.19  27.19  27.49  27.69  ...  28.29  28.29  27.79  27.33  26.62  27.72  28.52   27.55
 
->>> df_monthly = df.melt(id_vars=['YEAR'], value_vars=['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'], var_name='Month', value_name='Temperature')
+>>> df_monthly = df.melt(id_vars=['YEAR'], value_vars=['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'], 
+                         var_name='Month', value_name='Temperature')
 >>> df_monthly
       YEAR Month  Temperature
 0     1910   JAN        27.29
